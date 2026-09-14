@@ -637,54 +637,7 @@
     </div>
   </div>
 
-  <!-- Blueprint Guide Modal: How to add new works -->
-  <div class="modal-overlay" id="blueprintModal">
-    <div class="modal-card" style="max-width: 600px;">
-      <button class="modal-close-btn" id="closeBlueprintModal" aria-label="Закрыть">×</button>
-      <div class="modal-inner">
-        <div class="status-badge" style="width:fit-content;">
-          <span class="pulse-dot"></span>
-          <span>Инструкция для 9i7777</span>
-        </div>
-        <h2 style="font-size:1.5rem;">Как добавить свой проект в портфолио?</h2>
-        <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.55;">
-          Все проекты загружаются из одного файла: <code>js/projects-data.js</code>. Тебе не нужно переверстывать HTML-код!
-        </p>
 
-        <div style="background:var(--bg-secondary);padding:16px;border-radius:var(--radius-md);border-left:4px solid var(--accent-blue);font-family:var(--font-mono);font-size:0.82rem;overflow-x:auto;">
-<pre style="color:var(--text-primary);"><code>// Открой файл js/projects-data.js
-// И просто добавь новый объект в массив PROJECTS:
-
-{
-  id: 4,
-  title: "Название твоего проекта",
-  category: "frontend", // frontend | tool | prototype
-  status: "Ready",
-  statusClass: "status-ready",
-  description: "Что делает проект и какую задачу решает...",
-  features: [
-    "Первая ключевая фича",
-    "Вторая ключевая фича",
-    "Технология или интересная деталь"
-  ],
-  tags: ["HTML5", "CSS Grid", "JS ES6+"],
-  demoUrl: "https://твое-демо.vercel.app",
-  githubUrl: "https://github.com/9i7777/repo",
-  colorAccent: "#2563EB",
-  previewType: "kanban"
-}</code></pre>
-        </div>
-
-        <p style="color:var(--text-secondary);font-size:0.9rem;">
-          Карточка проекта с фильтрацией, тегами и модальным окном появится на сайте <strong>автоматически</strong>!
-        </p>
-
-        <button class="btn btn-primary" onclick="document.getElementById('blueprintModal').classList.remove('open')">
-          Понятно, спасибо!
-        </button>
-      </div>
-    </div>
-  </div>
 
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toastContainer"></div>

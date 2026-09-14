@@ -12,7 +12,6 @@ window.initUIInteractions = function() {
   initContactForm();
   initMobileNav();
   initPlayground();
-  initBlueprintModal();
 };
 
 /**
@@ -69,57 +68,46 @@ function renderProjects(category = 'all') {
   // Если проектов пока нет, показываем аккуратные слоты-чертежи
   if (filtered.length === 0 && PROJECTS.length === 0) {
     html += `
-      <div class="blueprint-card reveal active blueprint-trigger" style="grid-column: span 1;">
+      <div class="blueprint-card reveal active" style="grid-column: span 1;">
         <div class="blueprint-icon-box">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         </div>
-        <div class="project-status-tag status-prototype" style="position:static;">
-          Slot 01 // Готов к загрузке
+        <div class="project-status-tag status-concept" style="position:static;">
+          Slot 01 // In Development
         </div>
-        <h3 class="blueprint-title">Твой первый проект</h3>
+        <h3 class="blueprint-title">Новый проект</h3>
         <p class="blueprint-subtitle">
-          Слот свободен. Нажми сюда, чтобы посмотреть, как за 1 минуту добавить сюда свой проект!
+          Проект находится в разработке. Скоро здесь появится интерактивное превью и описание.
         </p>
-        <button class="btn btn-primary btn-sm">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-          Как добавить проект
-        </button>
       </div>
 
-      <div class="blueprint-card reveal active blueprint-trigger" style="grid-column: span 1; opacity: 0.85;">
+      <div class="blueprint-card reveal active" style="grid-column: span 1; opacity: 0.85;">
         <div class="blueprint-icon-box">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
         </div>
         <div class="project-status-tag status-concept" style="position:static;">
           Slot 02 // В планах
         </div>
-        <h3 class="blueprint-title">Твоя следующая работа</h3>
+        <h3 class="blueprint-title">Следующая работа</h3>
         <p class="blueprint-subtitle">
-          Здесь появится твой второй проект (лендинг, веб-сервис или приложение).
+          В процессе проектирования (веб-сервис или приложение).
         </p>
-        <button class="btn btn-secondary btn-sm">
-          Зарезервировано
-        </button>
       </div>
     `;
   } else {
     // Blueprint Slot для следующего проекта
     html += `
-      <div class="blueprint-card reveal active blueprint-trigger" id="blueprintSlotCard">
+      <div class="blueprint-card reveal active" id="blueprintSlotCard">
         <div class="blueprint-icon-box">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         </div>
         <div class="project-status-tag status-concept" style="position:static;">
           Slot 0${PROJECTS.length + 1} // In Development
         </div>
-        <h3 class="blueprint-title">Твоя следующая работа</h3>
+        <h3 class="blueprint-title">Следующий проект</h3>
         <p class="blueprint-subtitle">
-          Готовый слот для нового проекта. Нажми, чтобы увидеть, как легко добавить работу в портфолио!
+          Новая работа находится в активной разработке.
         </p>
-        <button class="btn btn-primary btn-sm" id="btnHowToAdd">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-          Как выгрузить проект
-        </button>
       </div>
     `;
   }
@@ -132,10 +120,6 @@ function renderProjects(category = 'all') {
       const id = parseInt(btn.getAttribute('data-id'), 10);
       openModal(id);
     });
-  });
-
-  document.querySelectorAll('.blueprint-trigger').forEach(card => {
-    card.addEventListener('click', openBlueprintModal);
   });
 }
 
@@ -274,24 +258,7 @@ function openModal(projectId) {
   };
 }
 
-/**
- * Blueprint Modal
- */
-function initBlueprintModal() {
-  const closeBtn = document.getElementById('closeBlueprintModal');
-  const modal = document.getElementById('blueprintModal');
-  if (closeBtn && modal) {
-    closeBtn.onclick = () => modal.classList.remove('open');
-    modal.onclick = (e) => {
-      if (e.target === modal) modal.classList.remove('open');
-    };
-  }
-}
 
-function openBlueprintModal() {
-  const modal = document.getElementById('blueprintModal');
-  if (modal) modal.classList.add('open');
-}
 
 /**
  * Theme Toggle
